@@ -80,24 +80,25 @@ def get_readable_time(seconds: int) -> str:
 
 
 buttons = [
-    [
-                        InlineKeyboardButton(
-                            text=f"Add NekoX To Your Group",
-                            url=f"t.me/NekoXRobot?startgroup=true")
-                    ],
+    
                    [
-                       InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
-                       InlineKeyboardButton(text="❔Chit Chat", url="https://t.me/Besties_XD"),
-                       InlineKeyboardButton(text="[► Repo ◄]", url="https://GitHub.com/Awesome-Prince/NekoRobot-3"),
+                       InlineKeyboardButton(text="Help & Commands ❓", callback_data="help_back"),
+                       
+                      
                      ],
                     [                  
                        InlineKeyboardButton(
                              text="🚑 Support",
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                        InlineKeyboardButton(
-                             text="📢 Updates",
-                             url="https://t.me/Koyuki_Updates")
+                             text="📝 Repo",
+                             url="https://GitHub.com/Awesome-Prince/NekoRobot-3")
                      ], 
+[
+                        InlineKeyboardButton(
+                            text=f"➕ Add Ⲥⲏʟⲟⲉ To Your Group ➕",
+                            url=f"t.me/ChloeXRobot?startgroup=true")
+                    ],
     ]
 
 
@@ -120,26 +121,24 @@ I Use My Powers To Help Admins To Manage Their Groups!
  ❥ /settings:
    ✐ in PM: will send you your settings for all supported modules.
    ✐ in a group: will redirect you to pm, with all that chat's settings.
-For all command use /* [or](https://telegra.ph/file/ab36976c685575c4e1a5f.jpg) *!* 
+For all command use /* [or](https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg) *!* 
 """.format(
     dispatcher.bot.first_name, ""
     if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\nKindly use ! for commands if / is not working\n")
 
-HELP_IMG = "https://telegra.ph/file/ab36976c685575c4e1a5f.jpg"
+HELP_IMG = "https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg"
 
 
 
 NEKO_IMG = (
-      "https://telegra.ph/file/6f6e36088ce15a189c400.mp4",
-      "https://telegra.ph/file/0cea56d9625f265ecc9db.mp4",
-      "https://telegra.ph/file/a131993b0f1e8517eacb2.mp4",
-      "https://telegra.ph/file/6f43ded36dba5f256bba7.mp4",
-      "https://telegra.ph/file/61acd313cc536bd1c6217.mp4",
-      "https://telegra.ph/file/f329cdd740c55bf955deb.mp4",
+      "https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg",
+      "https://telegra.ph/file/68ec16265bd0915b42d94.jpg",
+      "https://telegra.ph/file/798c1d569950c85d0ee6f.jpg",
+      "https://telegra.ph/file/9b48a722e38ce3bbfaaf9.jpg",
       )
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
-Click here to donate in [Telegram](https://t.me/DarlingPrince)"""
+Please donate to my [Oppa🫰🏻](https://t.me/Horny_RUBY)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -262,7 +261,7 @@ def start(update: Update, context: CallbackContext):
     else:
         first_name = update.effective_user.first_name
         update.effective_message.reply_animation(
-                random.choice(NEKO_IMG), caption= "<b>Yes,Darling I'm alive! Haven't sleep since</b>: <code>{}</code>".format(
+                random.choice(NEKO_IMG), caption= "<b>Yes,Darling. I'm alive! Haven't sleep since</b>: <code>{}</code>".format(
                 uptime
  
             ),
@@ -272,11 +271,11 @@ def start(update: Update, context: CallbackContext):
                 [
                   [                  
                        InlineKeyboardButton(
-                             text="Support🚑",
-                             url=f"https://t.me/Koyuki_Support"),
+                             text="Help❔",
+                             url=f"https://t.me/ChloeXRobot?start=help"),
                        InlineKeyboardButton(
-                             text="Updates🛰️",
-                             url="https://t.me/Koyuki_Updates")
+                             text="Oppa🫰🏻",
+                             url="https://t.me/Horny_RUBY")
                      ] 
                 ]
             ),
@@ -371,10 +370,10 @@ def neko_about_callback(update, context):
     query = update.callback_query
     if query.data == "about_":
         query.message.edit_text(
-            text=f"[◈](https://telegra.ph/file/0719635a2edcbea04be7a.jpg) Hey {escape_markdown(first_name)} Darling,"
+            text=f"[◈](https://telegra.ph/file/50504047d82c63c9518b9.jpg) Hey {escape_markdown(first_name)} Darling,"
               f"\n\n ➖➖➖➖➖➖➖➖➖➖➖➖➖"
-              f"\n\n Neko Info ➣ :-"
-              f"\n\n ◈ I Am An Anime Themed Advance Group Management Bot With A Lot Of Sexy Features."
+              f"\n\n Ⲥⲏʟⲟⲉ Info ➣ :-"
+              f"\n\n ◈ I Am A Hentai Themed Advance Group Management Bot With A Lot Of Sexy Features."
               f"\n\n ➖➖➖➖➖➖➖➖➖➖➖➖➖"
               f"\n\n ◈ Check The Buttons To Know About Me More.*",
             parse_mode=ParseMode.MARKDOWN,
@@ -383,7 +382,7 @@ def neko_about_callback(update, context):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Master", url="t.me/Awesome-Prince"
+                            text="Oppa🫰🏻", url="t.me/Horny_RUBY"
                         ),
                         InlineKeyboardButton(
                             text="Developer", url="t.me/H0daka"
@@ -462,7 +461,7 @@ def get_help(update: Update, context: CallbackContext):
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                  InlineKeyboardButton(text="Click Here", url="https://t.me/NekoXRobot?start=help")
+                  InlineKeyboardButton(text="Click Here", url="https://t.me/ChloeXRobot?start=help")
                   ]
                 ]
             ),
@@ -670,7 +669,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[Iam Alive!](https://telegra.ph/file/4533d130b73a7dd20b83d.jpg)", parse_mode=ParseMode.MARKDOWN,
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "[Iam Alive!](https://telegra.ph/file/569e16c2db73d3991b40f.jpg)", parse_mode=ParseMode.MARKDOWN,
 
             reply_markup=InlineKeyboardMarkup(
 
@@ -682,7 +681,7 @@ def main():
 
                              text="[► Summon Me ◄]",
 
-                             url=f"t.me/NekoXRobot?startgroup=true"),
+                             url=f"t.me/ChloeXRobot?startgroup=true"),
 
 
                      ] 
@@ -736,7 +735,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-        LOGGER.info("Using long polling.")
+        LOGGER.info("Chloe is Started.")
         updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
