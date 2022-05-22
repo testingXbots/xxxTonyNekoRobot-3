@@ -113,7 +113,8 @@ buttons = [
 
                     
 HELP_STRINGS = """
-*{} is here! 
+*{} is here!
+I am a Hentai themed advance group management bot with a lot of Sexy Features.
 I Use My Powers To Help Admins To Manage Their Groups! 
 *Main* commands available :
  ❥ /help: PM's you this message.
@@ -132,9 +133,11 @@ HELP_IMG = "https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg"
 
 NEKO_IMG = (
       "https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg",
-      "https://telegra.ph/file/68ec16265bd0915b42d94.jpg",
+      "https://telegra.ph/file/86d695fa788c4afe57c86.jpg",
       "https://telegra.ph/file/798c1d569950c85d0ee6f.jpg",
-      "https://telegra.ph/file/9b48a722e38ce3bbfaaf9.jpg",
+      "https://telegra.ph/file/003c274407adc8a4d104a.jpg",
+      "https://telegra.ph/file/50504047d82c63c9518b9.jpg",
+      "https://telegra.ph/file/4533d130b73a7dd20b83d.jpg",
       )
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
