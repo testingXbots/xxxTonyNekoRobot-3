@@ -132,7 +132,7 @@ HELP_IMG = "https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg"
 
 
 NEKO_IMG = (
-      "https://telegra.ph/file/d298943d371e58a8d8572.png",
+      "https://telegra.ph/file/6ad4eefabe602355b8a4d.jpg",
       "https://telegra.ph/file/86d695fa788c4afe57c86.jpg",
       "https://telegra.ph/file/798c1d569950c85d0ee6f.jpg",
       "https://telegra.ph/file/003c274407adc8a4d104a.jpg",
