@@ -88,7 +88,7 @@ buttons = [
                      ],
                     [                  
                        InlineKeyboardButton(
-                             text="💋 About Me", callback_data="neko_"),
+            text="About Me", callback_data="neko_"),
                        InlineKeyboardButton(
                              text="📝 Repo",
                              url="https://GitHub.com/Awesome-Prince/NekoRobot-3")
@@ -368,45 +368,28 @@ def help_button(update, context):
         pass
 
 @run_async
-def neko_about_callback(update, context):
+def neko_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "neko_":
         query.message.edit_text(
-            text=f"[◈](https://telegra.ph/file/50504047d82c63c9518b9.jpg) Hey {escape_markdown(first_name)} Darling,"
-              f"\n\n ➖➖➖➖➖➖➖➖➖➖➖➖➖"
-              f"\n\n Ⲥⲏʟⲟⲉ Info ➣ :-"
-              f"\n\n ◈ I Am A Hentai Themed Advance Group Management Bot With A Lot Of Sexy Features."
-              f"\n\n ➖➖➖➖➖➖➖➖➖➖➖➖➖"
-              f"\n\n ◈ Check The Buttons To Know About Me More.*",
+            text="""Hey baby,\n    This is [ⲩⲟⲟⲛⲓⲉ](t.me/Yoonie_rubybot)\n\nA powerful Group Management bot built to help you manage your group easily & to protect your group from scammers & spammers.\n\nI have the normal group managing functions like flood control, a warning system etc but I mainly have the advanced and handy antispam system and the banning system which safeguards and helps your group from spammers.\n\n🤖 What can i do :\n‣ I can restrict users.\n‣ I can greet users with customisable welcome messages & even set a  group's rules.\n‣ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.\n‣ I have an advanced anti-flood system.\n‣ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.\n‣ I check for admins permission before executing any command & more stuffs.\n\n\n❓ If you've any question about *ⲩⲟⲟⲛⲓⲉ* then contact to my [Oppa🫰🏻](t.me/Horny_RUBY) \n\nMade with ❤️ by [𓆩ᯓ𝙃𝙤𝙧𝙣𝙮↯𝙍𝙐𝘽𝙔𓆪 𓆩𔘓𓆪](https://t.me/Horny_RUBY)""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [
-                        InlineKeyboardButton(
-                            text="Oppa🫰🏻", url="t.me/Horny_RUBY"
-                        ),
-                        InlineKeyboardButton(
-                            text="Developer", url="t.me/H0daka"
-                        ),
-                    ],
-                    [InlineKeyboardButton(text="Back", callback_data="neko_back")],
+                 [
+                    InlineKeyboardButton(text="◁", callback_data="neko_back")
+                 ]
                 ]
             ),
         )
     elif query.data == "neko_back":
-        first_name = update.effective_user.first_name
         query.message.edit_text(
-                    PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
+                PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=True,
+                disable_web_page_preview=False,
         )
 
 
