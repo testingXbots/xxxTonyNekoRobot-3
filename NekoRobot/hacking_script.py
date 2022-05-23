@@ -1,5 +1,5 @@
 PM_START_TEXT = """
-────「 [{}](https://telegra.ph/file/4a3eab7199386bd3f806b.jpg) 」────
+────「 Ⲥⲏʟⲟⲉ[❤️‍🔥](https://telegra.ph/file/4a3eab7199386bd3f806b.jpg) 」────
 *やあ! {} My Darling, Iam your SweetHeart❤️
 I am a Hentai themed advance Group Management bot with a lot of Sexy Features.*
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
