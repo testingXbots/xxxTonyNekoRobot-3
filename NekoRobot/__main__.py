@@ -372,13 +372,21 @@ def neko_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "neko_":
         query.message.edit_text(
-            text="""Hey baby,\n    This is [ⲩⲟⲟⲛⲓⲉ](t.me/Yoonie_rubybot)\n\nA powerful Group Management bot built to help you manage your group easily & to protect your group from scammers & spammers.\n\nI have the normal group managing functions like flood control, a warning system etc but I mainly have the advanced and handy antispam system and the banning system which safeguards and helps your group from spammers.\n\n🤖 What can i do :\n‣ I can restrict users.\n‣ I can greet users with customisable welcome messages & even set a  group's rules.\n‣ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.\n‣ I have an advanced anti-flood system.\n‣ I have a note keeping system, blacklists, and even predetermined replies on certain keywords.\n‣ I check for admins permission before executing any command & more stuffs.\n\n\n❓ If you've any question about *ⲩⲟⲟⲛⲓⲉ* then contact to my [Oppa🫰🏻](t.me/Horny_RUBY) \n\nMade with ❤️ by [𓆩ᯓ𝙃𝙤𝙧𝙣𝙮↯𝙍𝙐𝘽𝙔𓆪 𓆩𔘓𓆪](https://t.me/Horny_RUBY)""",
+            text="""[◈](https://telegra.ph/file/50504047d82c63c9518b9.jpg) Hey Darling,\n      This is *Ⲥⲏʟⲟⲉ*\n\n➖➖➖➖➖➖➖➖➖➖➖➖➖\n\n Ⲥⲏʟⲟⲉ Info ➣ :-\n\n ◈ I Am A Hentai Themed Advance Group Management Bot With A Lot Of Sexy Features.\n\n ➖➖➖➖➖➖➖➖➖➖➖➖➖\n\n ◈ Check The Buttons To Know About Me More.\n\n\n❓ If you've any question about *Ⲥⲏʟⲟⲉ* then contact my [Oppa🫰🏻](t.me/Horny_RUBY) \n\nMade with ❤️ by [𓆩ᯓ𝙃𝙤𝙧𝙣𝙮↯𝙍𝙐𝘽𝙔𓆪 𓆩𔘓𓆪](https://t.me/Horny_RUBY)""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
+                  [
+                        InlineKeyboardButton(
+                            text="Oppa🫰🏻", url="t.me/Horny_RUBY"
+                        ),
+                        InlineKeyboardButton(
+                            text="Developer", url="t.me/H0daka"
+                        ),
+                    ],
                  [
-                    InlineKeyboardButton(text="◁", callback_data="neko_back")
+                    InlineKeyboardButton(text="Back", callback_data="neko_back")
                  ]
                 ]
             ),
