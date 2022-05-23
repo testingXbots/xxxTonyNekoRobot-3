@@ -88,7 +88,7 @@ buttons = [
                      ],
                     [                  
                        InlineKeyboardButton(
-                             text="About Me", callback_data="neko_"),
+                             text="💋 About Me", callback_data="neko_"),
                        InlineKeyboardButton(
                              text="📝 Repo",
                              url="https://GitHub.com/Awesome-Prince/NekoRobot-3")
