@@ -88,8 +88,7 @@ buttons = [
                      ],
                     [                  
                        InlineKeyboardButton(
-                             text="🚑 Support", 
-                              url=f"https://t.me/{SUPPORT_CHAT}"),
+                             text="About Me", callback_data="neko_"),
                        InlineKeyboardButton(
                              text="📝 Repo",
                              url="https://GitHub.com/Awesome-Prince/NekoRobot-3")
@@ -371,7 +370,7 @@ def help_button(update, context):
 @run_async
 def neko_about_callback(update, context):
     query = update.callback_query
-    if query.data == "about_":
+    if query.data == "neko_":
         query.message.edit_text(
             text=f"[◈](https://telegra.ph/file/50504047d82c63c9518b9.jpg) Hey {escape_markdown(first_name)} Darling,"
               f"\n\n ➖➖➖➖➖➖➖➖➖➖➖➖➖"
@@ -410,36 +409,6 @@ def neko_about_callback(update, context):
                 disable_web_page_preview=True,
         )
 
-
-async def neko_callback_data(update, context):
-    query = update.callback_query
-    uptime = get_readable_time((time.time() - StartTime))
-    if query.data == "neko_":
-        query.message.edit_text(
-            text="""CallBackQueriesData Here""",
-            parse_mode=ParseMode.MARKDOWN,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="[► Back ◄]", callback_data="neko_back")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "neko_back":
-        first_name = update.effective_user.first_name
-        query.message.edit_text(
-                    PM_START_TEXT.format(
-                    escape_markdown(context.bot.first_name),
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                timeout=60,
-                disable_web_page_preview=False,
-        )
 
 @run_async
 def get_help(update: Update, context: CallbackContext):
