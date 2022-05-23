@@ -88,7 +88,7 @@ buttons = [
                      ],
                     [                  
                        InlineKeyboardButton(
-                             text="💋 About Me", callback_data="about_"),
+                             text="💋 About Me", callback_data="neko_"),
                        InlineKeyboardButton(
                              text="📝 Repo",
                              url="https://GitHub.com/Awesome-Prince/NekoRobot-3")
@@ -131,12 +131,12 @@ HELP_IMG = "https://telegra.ph/file/e5ef13a66ddb7fd71ddc1.jpg"
 
 
 NEKO_IMG = (
-      "https://telegra.ph/file/6ad4eefabe602355b8a4d.jpg",
-      "https://telegra.ph/file/86d695fa788c4afe57c86.jpg",
-      "https://telegra.ph/file/798c1d569950c85d0ee6f.jpg",
-      "https://telegra.ph/file/003c274407adc8a4d104a.jpg",
-      "https://telegra.ph/file/13a775943a92ec67d600d.jpg",
-      "https://telegra.ph/file/4adfeb66b55addda53e1b.jpg",
+      "https://telegra.ph/file/523e51c654721bd174146.mp4",
+      "https://telegra.ph/file/7f53275ab6c9ede202afd.mp4",
+      "https://telegra.ph/file/d69164ba6eeafb2171ce2.mp4",
+      "https://telegra.ph/file/61ec9e628e9523ef1694e.mp4",
+      "https://telegra.ph/file/1b77dfc075fa5e6790204.mp4",
+      "https://telegra.ph/file/8ee46f581c10f3fe6b072.mp4",
       )
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
