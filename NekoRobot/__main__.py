@@ -568,8 +568,8 @@ def get_settings(update: Update, context: CallbackContext):
                     InlineKeyboardButton(
                         text="Settings",
                         url="t.me/{}?start=stngs_{}".format(
-                            context.bot.username, chat.id))
-                ]]))
+                            context.bot.username, chat.id),)
+                ]]),)
         else:
             text = "Click here to check your settings."
 
