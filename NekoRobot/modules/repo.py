@@ -32,7 +32,7 @@ async def awake(event):
   NEKO = """
          We Are So Happy To Announce That We Have Public Our NekoRobot Repo. ✨🥀
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
-「@NekoXRobot」
+「@NekoXRobot」✘「@ChloeXRobot」
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 Here is the Repo Deploy your Own NekoRobot.
 ⚜️Repo ➛ https://github.com/Awesome-Prince/NekoRobot-3.git
