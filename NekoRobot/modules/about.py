@@ -7,7 +7,8 @@ PHOTO = "https://telegra.ph/file/50504047d82c63c9518b9.jpg"
 @register(pattern=("/about"))
 async def awake(event):
   NEKO = """
-         ◈ Hey Darling,\n          This is *Ⲥⲏʟⲟⲉ*
+         ◈ Hey Darling,
+                    This is *Ⲥⲏʟⲟⲉ*
 
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
