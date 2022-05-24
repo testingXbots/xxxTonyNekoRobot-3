@@ -349,16 +349,16 @@ __help__ = """
  🔹 `/slap`*:* slap a user, or get slapped if not a reply
  🔹 `/shrug`*:* get shrug XD
  🔹 `/table`*:* get flip/unflip :v
- 🔹 `/decide*:* Randomly answers yes/no/maybe
+ 🔹 `/decide`*:* Randomly answers yes/no/maybe
  🔹 `/toss`*:* Tosses A coin
  🔹 `/bluetext`*:* check urself :V
- 🔹 `/roll*:* Roll a dice
+ 🔹 `/roll`*:* Roll a dice
  🔹 `/rlg`*:* Join ears,nose,mouth and create an emo ;-;
  🔹 `/weebify` <text>*:* returns a weebified text
  🔹 `/pat`*:* pats a user, or get patted
  🔹 `/8ball`*:* predicts using 8ball method 
  🔹 `/decide` can be also used with regex like: `Liza? <question>: randomly answer "Yes, No" etc.`
- 🔹 `/hitler` *:* Quote a message and type this command to make a caption of hitler
+ 🔹 `/hitler`*:* Quote a message and type this command to make a caption of hitler
 """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
