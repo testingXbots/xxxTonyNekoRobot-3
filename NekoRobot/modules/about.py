@@ -8,8 +8,7 @@ PHOTO = "https://telegra.ph/file/50504047d82c63c9518b9.jpg"
 async def awake(event):
   NEKO = """
          ◈ Hey Darling,
-                    This is *Ⲥⲏʟⲟⲉ*
-
+                    This is Ⲥⲏʟⲟⲉ ❤️‍🔥
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
