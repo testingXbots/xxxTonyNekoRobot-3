@@ -12,7 +12,7 @@ async def awake(event):
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
-*Ⲥⲏʟⲟⲉ Info* ➣ :-
+Ⲥⲏʟⲟⲉ Info ➣ :-
 
 ◈ I Am A Hentai Themed Advance Group Management Bot With A Lot Of Sexy Features.
  ‣ A powerful Group Management bot built to help you manage your group easily & to protect your group from scammers & spammers.
