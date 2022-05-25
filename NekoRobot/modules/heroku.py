@@ -66,7 +66,7 @@ async def variable(var):
             os.remove("configs.json")
             return
     elif exe == "set":
-        s = await var.reply("`Setting information...weit ser`")
+        s = await var.reply("`Setting information... please wait Darling`")
         variable = var.pattern_match.group(2)
         if not variable:
             return await s.edit(">`.set var <ConfigVars-name> <value>`")
