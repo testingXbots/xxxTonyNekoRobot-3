@@ -29,7 +29,7 @@ from NekoRobot import telethn as tgbot
 PHOTO = "https://telegra.ph/file/7a13b2aab8242a1b80c61.jpg"
 @register(pattern=("/alive"))
 async def awake(event):
-  NEKO = f"🤖 Hey {event.sender.first_name} I,m Chloe Robot\n\n"
+  NEKO = f"🤖 Hey {event.sender.first_name} I'm Chloe Robot\n\n"
   NEKO += "✅ I'm Working with Horniness\n\n"
   NEKO += "✅ Chloe : Latest Version\n\n"
   NEKO += "✅ python-Telegram-Bot: 13.11\n\n"
