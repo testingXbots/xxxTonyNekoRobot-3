@@ -546,7 +546,7 @@ def devlist(update: Update, context: CallbackContext):
     update.effective_message.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
-__help__ = f"""
+__help__ = """
 *⚠️ Notice:*
 Commands listed here only work for users with special access are mainly used for troubleshooting, debugging purposes.
 Group admins/group owners do not need these commands. 
@@ -633,6 +633,15 @@ Group admins/group owners do not need these commands.
  ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
  ╠ `/ungban`*:* Ungbans the user, same usage as gban
  ╚ `/gbanlist`*:* Outputs a list of gbanned users
+
+ ╔ *Heroku Settings:*
+ ╠ *Owner only*
+ ╠ `/usage`*:* Check your heroku dyno hours remaining.
+ ╠ `/see var <var>`*:* Get your existing varibles, use it only on your private group!
+ ╠ `/set var <newvar> <vavariable>`*:* Add new variable or update existing value variable.
+ ╠ `/del var <var>`*:* Delete existing variable.
+ ╚ `/logs`*:* Get heroku dyno logs.
+
 
 Visit @{SUPPORT_CHAT} for more information.
 """
