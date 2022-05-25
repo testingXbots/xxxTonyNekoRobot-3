@@ -26,11 +26,11 @@ from telegram.ext import run_async, Filters
 from telegram import Message
 
 OWO = (
-    "*Neko pats {} on the head.",
+    "*Chloe pats {} on the head.",
     "*gently rubs {}'s head*.",
-    "*Neko mofumofus {}'s head*",
-    "*Neko messes up {}'s head*",
-    "*Neko intensly rubs {}'s head*",
+    "*Chloe mofumofus {}'s head*",
+    "*Chloe messes up {}'s head*",
+    "*Chloe intensly rubs {}'s head*",
     "*{}'s waifu pats their head*",
     "*{}'s got free headpats*",
     "No pats for {}!",
