@@ -123,6 +123,4 @@ soupsieve==2.2.1
 SpeechRecognition==3.8.1
 urllib3==1.26.7
 wikipedia==1.4.0
-requests
-speedtest
 
