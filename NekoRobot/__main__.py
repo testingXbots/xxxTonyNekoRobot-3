@@ -137,6 +137,7 @@ NEKO_IMG = (
       "https://telegra.ph/file/08743ae58b1c1fad735bb.gif",
       "https://telegra.ph/file/a762f26f96baf64456d15.gif",
       "https://telegra.ph/file/741ef2b7712afd404b326.gif",
+      "https://telegra.ph/file/2dafef52bf2f577946491.gif",
       )
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
