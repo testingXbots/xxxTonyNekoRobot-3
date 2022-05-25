@@ -157,13 +157,13 @@ async def dyno_usage(dyno):
     await asyncio.sleep(1.5)
 
     return await die.edit(
-        "**DYNO USAGE**:\n\n"
-        f" -> Dyno Usage for **{HEROKU_APP_NAME}**:\n"
-        f"     •  {AppHours}**H**  {AppMinutes}**m**  "
+        "**DYNO USAGE:-**\n\n"
+        f" ‣ Dyno Usage for **{HEROKU_APP_NAME}**:\n"
+        f"     **•  {AppHours}h**  **{AppMinutes}m**  "
         f"**|**  [{AppPercentage}**%**]"
         "\n\n"
-        " -> Remaining Free Dynos of this month:\n"
-        f"     •  {hours}**H**  {minutes}**m**  "
+        " ‣ Remaining Free Dynos of this month:\n"
+        f"     **•  {hours}h**  **{minutes}m**  "
         f"**|**  [{percentage}**%**]"
     )
 
@@ -183,7 +183,7 @@ async def _(dyno):
         return await dyno.reply(
             " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
         )
-    v = await dyno.reply("Getting Logs....")
+    v = await dyno.reply("Getting Logs...")
     with open("logs.txt", "w") as log:
         log.write(app.get_log())
     await v.edit("Got the logs wait a sec")
