@@ -34,7 +34,7 @@ async def awake(event):
   NEKO += f"✅ Chloe : Latest Version\n\n"
   NEKO += f"✅ python-Telegram-Bot: 13.11\n\n"
   NEKO += f"♥️ My Heart : [Oppa🫰🏻](t.me/Horny_RUBY)\n\n"
-  NEKO += f"🧑🏻‍💻 My Creator : [LovelyPrince](t.me/Its_IZ_PRINCE_xD)\n\n"
+  NEKO += f"🧑🏻‍💻 My Creator : [LovelyPrince](t.me/DarlingPrince)\n\n"
   
   BUTTON = [[Button.url("🚑 Support", "https://t.me/Koyuki_Support"), Button.url("📝 Repo", "https://github.com/Awesome-Prince/NekoRobot-3.git")]]
   await tbot.send_file(event.chat_id, PHOTO, caption=NEKO,  buttons=BUTTON)
