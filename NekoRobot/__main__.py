@@ -382,7 +382,7 @@ def neko_about_callback(update: Update, context: CallbackContext):
                             text="Oppa🫰🏻", url="t.me/Horny_RUBY"
                         ),
                         InlineKeyboardButton(
-                            text="Developer", url="t.me/Its_IZ_PRINCE_xD"
+                            text="Developer", url="t.me/DarlingPrince"
                         ),
                     ],
                  [
