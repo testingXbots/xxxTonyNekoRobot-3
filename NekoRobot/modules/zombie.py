@@ -70,7 +70,7 @@ async def rm_deletedacc(show):
     admin = chat.admin_rights
     creator = chat.creator
     if not admin and not creator:
-        return await show.reply("**Sorry you're not an Admin!**")
+        return await show.reply("**Sorry, requires Admin privilege!**")
     memek = await show.reply("`Fu*king deleted accounts...`")
     del_u = 0
     del_a = 0
