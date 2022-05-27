@@ -93,7 +93,7 @@ async def rm_deletedacc(show):
         del_status = (
             f"**Kicked {del_u} Deleted account(s)**"
             f"\n**❗ {del_a} Admin Deleted account(s) not deleted.**"
-            f"\n    **»** Disadmin & try again..."
+            f"\n     **»** Disadmin & try again..."
         )
     await memek.edit(del_status)
 __help__ = """
