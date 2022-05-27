@@ -40,7 +40,7 @@ def kukirm(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "Hey Darling Neko Chatbot disable by {}.".format(mention_html(user.id, user.first_name)),
+                "**Ⲥⲏʟⲟⲉ** chatbot disabled by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -66,7 +66,7 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "Hey Darling Ⲥⲏʟⲟⲉ Chatbot enable by {}.".format(mention_html(user.id, user.first_name)),
+                "**Ⲥⲏʟⲟⲉ** chatbot enabled by {}.".format(mention_html(user.id, user.first_name)),
                 parse_mode=ParseMode.HTML,
             )
 
@@ -78,7 +78,7 @@ def kukiadd(update: Update, context: CallbackContext) -> str:
 def kuki(update: Update, context: CallbackContext):
     user = update.effective_user
     message = update.effective_message
-    msg = "Choose an option"
+    msg = "🤖 Choose an option to enable/disable chatbot"
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
             text="Enable",
@@ -115,17 +115,18 @@ def chatbot(update: Update, context: CallbackContext):
     if message.text and not message.document:
         if not kuki_message(context, message):
             return
-        Message = message.text
+        ruby = message.text
         bot.send_chat_action(chat_id, action="typing")
-        kukiurl = requests.get('https://www.kukiapi.xyz/api/apikey=KUKIur8jgD3nY4/Neko/@Horimaya/message='+Message)
-        Kuki = json.loads(kukiurl.text)
-        kuki = Kuki['reply']
+        url = f"https://www.kukiapi.xyz/api/apikey=697630079-KUKIGx5lAF5RE8/Chloe/Ruby/message={ruby}" 
+        request = requests.get(url) 
+        results = json.loads(request.text) 
+        result = f"{results['reply']}"
         sleep(0.3)
-        message.reply_text(kuki, timeout=60)
+        message.reply_text(result)
 
 def list_all_chats(update: Update, context: CallbackContext):
     chats = sql.get_all_kuki_chats()
-    text = "<b>Neko Enabled Chats</b>\n"
+    text = "<b>Ⲥⲏʟⲟⲉ Enabled Chats</b>\n"
     for chat in chats:
         try:
             x = context.bot.get_chat(int(*chat))
@@ -139,11 +140,11 @@ def list_all_chats(update: Update, context: CallbackContext):
 
 __help__ = """
 *Admins only Commands*:
-  ➢ `/Chatbot`*:* Shows chatbot control panel
+ ‣ /chatbot : Shows chatbot control panel
 
 """
 
-__mod_name__ = "ChatBot"
+__mod_name__ = "Chatbot"
 
 
 CHATBOTK_HANDLER = CommandHandler("chatbot", kuki )
