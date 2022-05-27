@@ -27,7 +27,7 @@ from NekoRobot.events import register
 from NekoRobot import telethn as tbot
 from NekoRobot import telethn as tgbot
 PHOTO = "https://telegra.ph/file/4145108fb4476c963c19d.jpg"
-@register(pattern=("/repo"))
+@register(pattern=("/source"))
 async def awake(event):
   NEKO = """
          We Are So Happy To Announce That We Have Public Our NekoRobot Repo. ✨🥀
@@ -44,5 +44,5 @@ Oppa 🫶🏻 :- @Horny_RUBY
 Powered By:- @Koyuki_Network
 """
   
-  BUTTON = [[Button.url("📢 Repository", "https://github.com/Awesome-Prince/NekoRobot-3"), Button.url("💻 Collaborators", "https://telegra.ph/NekoXChloe-05-24")]]
+  BUTTON = [[Button.url("📢 Repository", "https://github.com/Awesome-Prince/NekoRobot-3"), Button.url("💻 Collaborators", "https://telegra.ph/NekoXChloe-05-27")]]
   await tbot.send_file(event.chat_id, PHOTO, caption=NEKO,  buttons=BUTTON)
