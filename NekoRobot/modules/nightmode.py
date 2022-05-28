@@ -12,26 +12,22 @@ import os
 
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
-        return isinstance(
-            (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
-            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
-        )
-    if isinstance(chat, types.InputPeerUser):
-        return True
 
-async def can_change_info(message):
-    result = await tbot(
-        functions.channels.GetParticipantRequest(
-            channel=message.chat_id,
-            user_id=message.sender_id,
+        return isinstance(
+            (await tbot(functions.channels.GetParticipantRequest(chat, user))).participant,
+            (types.ChannelParticipantAdmin, types.ChannelParticipantCreator)
         )
-    )
-    p = result.participant
-    return isinstance(p, types.ChannelParticipantCreator) or (
-        isinstance(p, types.ChannelParticipantAdmin) and p.admin_rights.change_info
-    )
+    elif isinstance(chat, types.InputPeerChat):
+
+        ui = await tbot.get_peer_id(user)
+        ps = (await tbot(functions.messages.GetFullChatRequest(chat.chat_id))) \
+            .full_chat.participants.participants
+        return isinstance(
+            next((p for p in ps if p.user_id == ui), None),
+            (types.ChatParticipantAdmin, types.ChatParticipantCreator)
+        )
+    else:
+        return None
 
 
 
@@ -70,11 +66,7 @@ async def close_ws(event):
        await event.reply("❗Only admins can execute this command.")
        return
       
-     else:
-          if not await can_change_info(message=event):
-            await event.reply("You are missing the following rights to use this command:CanChangeinfo")
-            return
-
+    
 
     if not event.is_group:
         await event.reply("You Can Only Enable Night Mode in Groups.")
@@ -92,11 +84,7 @@ async def disable_ws(event):
        await event.reply("❗Only admins can execute this command.")
        return
 
-     else:
-          if not await can_change_info(message=event):
-            await event.reply("You are missing the following rights to use this command:CanChangeinfo")
-            return
-
+     
 
 
     if not event.is_group:
