@@ -75,7 +75,7 @@ async def close_ws(event):
         await event.reply("Currently NightMode is Enabled for this Chat.")
         return
     add_nightmode(str(event.chat_id))
-    await event.reply(f"Added chat **{event.chat.title}** with id : `{event.chat_id}` to database.\n\n**This Group will be Closed at 12am(IST) & will be Opened at 06am(IST)**")
+    await event.reply(f"Added NightMode to chat **{event.chat.title}** with id : `{event.chat_id}` to database.\n\n**This Group will be Closed at 12am(IST) & will be Opened at 06am(IST)**")
 
 @register(pattern="^/rmnight")
 async def disable_ws(event):
@@ -94,7 +94,7 @@ async def disable_ws(event):
         await event.reply("NightMode is Disabled for this Chat")
         return
     rmnightmode(str(event.chat_id))
-    await event.reply(f"Removed chat **{event.chat.title}** with id : `{event.chat_id}` From Database.")
+    await event.reply(f"Removed NightMode from chat **{event.chat.title}** with id : `{event.chat_id}` From Database.")
 
 
 async def job_close():
