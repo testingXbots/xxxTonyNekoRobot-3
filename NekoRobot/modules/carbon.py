@@ -9,12 +9,12 @@ from NekoRobot.utils.functions import make_carbon
 @capture_err
 async def carbon_func(_, message):
     if not message.reply_to_message:
-        return await message.reply_text("`Reply to a text to generate Carbon.`")
+        return await message.reply_text("`Reply to a text to Generate Carbon.`")
     if not message.reply_to_message.text:
-        return await message.reply_text("`Reply to a text to generate Carbon.`")
-    m = await message.reply_text("😴`Generating Carbon...`")
+        return await message.reply_text("`Reply to a text to Generate Carbon.`")
+    m = await message.reply_text("`Generating Carbon...`")
     carbon = await make_carbon(message.reply_to_message.text)
-    await m.edit("`Uploading Generated Carbon...`")
+    await m.edit("`Uploading...`")
     await pbot.send_photo(message.chat.id, carbon)
     await m.delete()
     carbon.close()
