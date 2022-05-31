@@ -6,7 +6,7 @@ from functools import wraps
 
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 
-from NekoRobot import LOG_GROUP_ID, app
+from NekoRobot import LOG_GROUP_ID, pbot
 
 
 def split_limits(text):
