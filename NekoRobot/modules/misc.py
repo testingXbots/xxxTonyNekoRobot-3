@@ -120,6 +120,8 @@ Example:
       _OR_
  `/cash 1 usd inr`
 Output: `1.0 USD = 75.505 INR`
+*Carbon:*
+ • `/carbon` : Makes Carbon if replied to a text.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
