@@ -30,10 +30,10 @@ PHOTO = "https://telegra.ph/file/7a13b2aab8242a1b80c61.jpg"
 @register(pattern=("/alive"))
 async def awake(event):
   NEKO = f"🤖 Hey [{event.sender.first_name}](tg://user?id={event.sender.id}), I'm **Ⲥⲏʟⲟⲉ** Robot\n\n"
-  NEKO += f"✅ I'm Working with Horniness\n\n"
-  NEKO += f"✅ Chloe : Latest Version\n\n"
+  NEKO += f"✅ I'm Working with **Horniness**\n\n"
+  NEKO += f"✅ Ⲥⲏʟⲟⲉ : Latest Version\n\n"
   NEKO += f"✅ python-Telegram-Bot: 13.11\n\n"
-  NEKO += f"♥️ My Heart : [Oppa🫰🏻](t.me/Horny_RUBY)\n\n"
+  NEKO += f"**♥️ My Heart : [Oppa🫰🏻](t.me/Horny_RUBY)**\n\n"
   NEKO += f"🧑🏻‍💻 My Creator : [LovelyPrince](t.me/DarlingPrince)\n\n"
   
   BUTTON = [[Button.url("🚑 Support", "https://t.me/Koyuki_Support"), Button.url("📝 Repo", "https://github.com/Awesome-Prince/NekoRobot-3.git")]]
