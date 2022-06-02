@@ -12,7 +12,7 @@ import NekoRobot.modules.sql.users_sql as sql
 from NekoRobot.modules.helper_funcs.filters import CustomFilters
 from NekoRobot import dispatcher, DEV_USERS, LOGGER
 from NekoRobot.modules.disable import DisableAbleCommandHandler
-from NekoRobot import SUPPORT _CHAT
+from NekoRobot import SUPPORT_CHAT
 
 @run_async
 def snipe(update: Update, context: CallbackContext):
