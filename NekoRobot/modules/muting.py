@@ -250,7 +250,8 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
 @bot_admin
 @user_admin
 @loggable
-def nomedia(bot: Bot, update: Update, args: List[str]) -> str:
+def nomedia(update: Update, context: CallbackContext) -> str:
+    bot, args = context.bot, context.args
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -314,7 +315,8 @@ def nomedia(bot: Bot, update: Update, args: List[str]) -> str:
 @bot_admin
 @user_admin
 @loggable
-def media(bot: Bot, update: Update, args: List[str]) -> str:
+def media(update: Update, context: CallbackContext) -> str:
+    bot, args = context.bot, context.args
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -372,7 +374,8 @@ def media(bot: Bot, update: Update, args: List[str]) -> str:
 @can_restrict
 @user_admin
 @loggable
-def temp_nomedia(bot: Bot, update: Update, args: List[str]) -> str:
+def temp_nomedia(update: Update, context: CallbackContext) -> str:
+    bot, args = context.bot, context.args
     chat = update.effective_chat
     user = update.effective_user
     message = update.effective_message
@@ -474,7 +477,8 @@ def temp_nomedia(bot: Bot, update: Update, args: List[str]) -> str:
 @run_async
 @bot_admin
 @can_restrict
-def muteme(bot: Bot, update: Update, args: List[str]) -> str:
+def muteme(update: Update, context: CallbackContext) -> str:
+    bot, args = context.bot, context.args
     user_id = update.effective_message.from_user.id
     chat = update.effective_chat
     user = update.effective_user
