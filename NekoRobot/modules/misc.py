@@ -118,6 +118,10 @@ Example:
       _OR_
  `/cash 1 usd inr`
 Output: `1.0 USD = 75.505 INR`
+*Wish:*
+ ‣ `/wish`*:* Randomly cast your success %
+*Guess:*
+ ‣ `/guess`*:* Randomly predicts your decision %
 *Carbon:*
  ‣ `/carbon`*:* Makes Carbon if replied to a text.
 *Fake Details:*
