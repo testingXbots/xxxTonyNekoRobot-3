@@ -30,7 +30,7 @@ async def proboyx(event):
     current_time = datetime.utcnow()
     betsy = event.sender.first_name
     button = [[custom.Button.inline("Click Here",data="information")]]
-    on = await bot.send_file(event.chat_id, file=file2,caption= f"♡ Hey {betsy}, I'm Neko\n♡ I'm Created By [Prince](tg://user?id=1732814103)\n♡ Click The Button Below To Get Your Info", buttons=button)
+    on = await bot.send_file(event.chat_id, file=file2,caption= f"♡ Hey {betsy}, I'm Chloe\n♡ Click The Button Below To Get Your Info", buttons=button)
 
     await asyncio.sleep(edit_time)
     ok = await bot.edit_message(event.chat_id, on, file=file3, buttons=button) 
@@ -64,7 +64,7 @@ async def callback_query_handler(event):
   try:
     boy = event.sender_id
     PRO = await bot.get_entity(boy)
-    NEKO = "YOUR DETAILS BY NEKO \n\n"
+    NEKO = "YOUR DETAILS BY Ⲥⲏʟⲟⲉ \n\n"
     NEKO += f"FIRST NAME : {PRO.first_name} \n"
     NEKO += f"LAST NAME : {PRO.last_name}\n"
     NEKO += f"YOU BOT : {PRO.bot} \n"
