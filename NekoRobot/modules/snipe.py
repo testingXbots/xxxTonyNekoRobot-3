@@ -35,7 +35,7 @@ def snipe(update: Update, context: CallbackContext):
                 "Couldn't send the message. Perhaps I'm not part of that group?")
 
 
-__help__ = f"""
+__help__ = """
 *⚠️ Notice:*
 Commands listed here only work for users with special access and are mainly used for troubleshooting, debugging purposes.
 Group admins/group owners do not need these commands.
