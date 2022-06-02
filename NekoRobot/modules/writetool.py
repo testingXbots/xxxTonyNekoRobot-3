@@ -17,7 +17,7 @@ async def handwriting(_, message):
     await m.edit("» Uploading...")
     await pbot.send_chat_action(message.chat.id, "upload_photo")
     await message.reply_photo(hand, caption="Written with🖊 by [Ⲥⲏʟⲟⲉ](t.me/ChloeXRobot)")
-
+    await m.delete()
 
 __mod_name__ = "Handwrite"
 
