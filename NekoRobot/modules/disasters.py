@@ -625,6 +625,9 @@ Group admins/group owners do not need these commands.
  ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
  ╠ `/ungban`*:* Ungbans the user, same usage as gban
  ╚ `/gbanlist`*:* Outputs a list of gbanned users
+
+ ╔ *Dev only:* 
+ ╚ `/snipe <chatid> <string>`*:* Make me send a message to a specific chat.
 """
 
 
