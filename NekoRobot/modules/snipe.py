@@ -12,7 +12,7 @@ import NekoRobot.modules.sql.users_sql as sql
 from NekoRobot.modules.helper_funcs.filters import CustomFilters
 from NekoRobot import dispatcher, DEV_USERS, LOGGER
 from NekoRobot.modules.disable import DisableAbleCommandHandler
-
+from NekoRobot import SUPPORT _CHAT
 
 @run_async
 def snipe(update: Update, context: CallbackContext):
@@ -109,6 +109,8 @@ Group admins/group owners do not need these commands.
  ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
  ╠ `/ungban`*:* Ungbans the user, same usage as gban
  ╚ `/gbanlist`*:* Outputs a list of gbanned users
+
+Visit @{SUPPORT_CHAT} for more information.
 """
 
 __mod_name__ = "Disasters"
