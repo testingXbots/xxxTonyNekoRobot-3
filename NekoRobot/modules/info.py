@@ -18,16 +18,15 @@ async def get_user_info(user, already=False):
     username = user.username
     first_name = user.first_name
     mention = user.mention("Link")
-    dc_id = user.dc_id
+    last_name = user.last_name
     photo_id = user.photo.big_file_id if user.photo else None
     
     body = {
         "ID": user_id,
-        "DC": dc_id,
-        "Name": [first_name],
+        "First Name": [first_name],
+        "Last Name": [last_name],
         "Username": [("@" + username) if username else "Null"],
-        "Mention": [mention],
-        
+        "User Link": [mention],
     }
     caption = section("User info", body)
     return [caption, photo_id]
