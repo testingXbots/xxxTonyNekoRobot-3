@@ -7,7 +7,14 @@ from pyrogram.types import Message
 from NekoRobot import pbot as app
 from NekoRobot.services.sections import section
 
-from NekoRobot import DEMONS
+from NekoRobot import (
+    DEV_USERS,
+    OWNER_ID,
+    DRAGONS,
+    DEMONS,
+    TIGERS,
+    WOLVES,
+)
 
 
 async def get_user_info(user, already=False):
@@ -15,6 +22,28 @@ async def get_user_info(user, already=False):
         user = await app.get_users(user)
     if not user.first_name:
         return ["Deleted account", None]
+
+   if user.id == OWNER_ID:
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
+        
+    elif user.id in DEV_USERS:
+        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs ᴀ ᴍᴇᴍʙᴇʀ ᴏғ <b>ᴀɴᴏɴ ᴀssᴏᴄɪᴀᴛɪᴏɴ</b>.\n"
+        
+    elif user.id in DRAGONS:
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅʀᴀɢᴏɴ</b>.\n"
+        
+    elif user.id in DEMONS:
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅᴇᴍᴏɴ</b>.\n"
+        
+    elif user.id in TIGERS:
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴛɪɢᴇʀ</b>.\n"
+        
+    elif user.id in WOLVES:
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴡᴏʟғ</b>.\n"
+        
+
+
+
     user_id = user.id
     username = user.username
     first_name = user.first_name
@@ -22,7 +51,7 @@ async def get_user_info(user, already=False):
     last_name = user.last_name
     photo_id = user.photo.big_file_id if user.photo else None
     
-    is_demon = user.id in DEMONS
+    
 
 
     body = {
@@ -32,8 +61,10 @@ async def get_user_info(user, already=False):
         "Username": [("@" + username) if username else "Null"],
         "User Link": [mention],
         
-        "Rank": is_demon,
     }
+
+
+
     caption = section("User info", body)
     return [caption, photo_id]
 
