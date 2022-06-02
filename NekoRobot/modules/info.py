@@ -39,7 +39,7 @@ async def get_user_info(user, already=False):
     caption = section("User info", body)
     return [caption, photo_id]
 
-if user.id == OWNER_ID:
+if user_id == OWNER_ID:
         text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
 
 
