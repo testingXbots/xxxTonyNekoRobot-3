@@ -17,11 +17,11 @@ from NekoRobot import dispatcher
 
 edit_time = 5
 """ =======================CONSTANTS====================== """
-file1 = "https://telegra.ph/file/36440524ecd0a6b65138f.jpg"
-file2 = "https://telegra.ph/file/b0868af85d1d17554a6d4.jpg"
-file3 = "https://telegra.ph/file/60c612b4736560f9b98b9.jpg"
-file4 = "https://telegra.ph/file/a502e6322a201f5949058.jpg"
-file5 = "https://telegra.ph/file/737a7b4d519887c35ed21.jpg"
+file1 = "https://telegra.ph/file/86d695fa788c4afe57c86.jpg"
+file2 = "https://telegra.ph/file/6ad4eefabe602355b8a4d.jpg"
+file3 = "https://telegra.ph/file/798c1d569950c85d0ee6f.jpg"
+file4 = "https://telegra.ph/file/003c274407adc8a4d104a.jpg"
+file5 = "https://telegra.ph/file/569e16c2db73d3991b40f.jpg"
 """ =======================CONSTANTS====================== """
 
 @register(pattern="/myinfo")
@@ -75,9 +75,6 @@ async def callback_query_handler(event):
   except Exception as e:
     await event.reply(f"{e}")
 
-__help__ = """
-/myinfo: shows your info in inline button
-"""
 
 __mod_name__ = "myinfo"
 __command_list__ = [
