@@ -405,9 +405,9 @@ def check_and_ban(update, user_id, should_message=True):
     if sql.is_user_gbanned(user_id):
         update.effective_chat.kick_member(user_id)
         if should_message:
-            text = f"<b>Alert</b>: this user is globally banned.\n"
-                   f"<code>*bans them from here*</code>.\n"
-                   f"<b>Appeal chat</b>: @{SUPPORT_CHAT}\n"
+            text = f"<b>Alert</b>: this user is globally banned.\n" \
+                   f"<code>*bans them from here*</code>.\n" \
+                   f"<b>Appeal chat</b>: @{SUPPORT_CHAT}\n" \
                    f"<b>User ID</b>: <code>{user_id}</code>"
             user = sql.get_gbanned_user(user_id)
             if user.reason:
