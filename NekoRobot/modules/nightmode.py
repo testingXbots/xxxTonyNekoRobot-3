@@ -139,7 +139,7 @@ async def profanity(event):
                     )
                     return
         rmnightmode(str(event.chat_id))
-        await event.reply("NightMode Disabled!")
+        await event.reply("NightMode Disabled for this chat")
     if not "off" in input and not "on" in input:
         await event.reply("Please Specify On or Off!")
         return
@@ -186,7 +186,7 @@ async def job_open():
 
 # Run everyday at 06
 scheduler = AsyncIOScheduler(timezone="Asia/Colombo")
-scheduler.add_job(job_open, trigger="cron", hour=5, minute=58)
+scheduler.add_job(job_open, trigger="cron", hour=5, minute=59)
 scheduler.start()
 
 
