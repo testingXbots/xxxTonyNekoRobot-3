@@ -56,6 +56,6 @@ async def info_func(_, message: Message):
 
     
 
-    await message.reply_text(caption=info_caption, quote=False)
+
     await m.delete()
     
