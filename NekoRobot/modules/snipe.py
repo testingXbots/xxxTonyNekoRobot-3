@@ -74,6 +74,15 @@ Group admins/group owners do not need these commands.
  ╠ `/lockdown <off/on>`*:* Toggles bot adding to groups
  ╠ `/notice`*:* Removes user from blacklist
  ╚ `/ignoredlist`*:* Lists ignored users
+
+ ╔ *Module loading:*
+ ╠ `/listmodules`*:* Prints modules and their names
+ ╠ `/unload <name>`*:* Unloads module dynamically
+ ╚ `/load <name>`*:* Loads module
+
+ ╔ *Global Bans:*
+ ╠ `/gban user reason`*:* Globally bans a user
+ ╚ `/ungban user reason`*:* Unbans the user from the global bans list
 """
 
 __mod_name__ = "Disasters"
