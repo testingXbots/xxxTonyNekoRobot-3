@@ -21,9 +21,3 @@ async def handwriting(_, message):
 
 __mod_name__ = "Handwrite"
 
-__help__ = """
-
-*Writes the given text on white page with a pen* 🖊
-
- ‣ `/write <text>` *:* writes the given text.
- """
