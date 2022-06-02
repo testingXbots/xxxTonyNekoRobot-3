@@ -190,11 +190,12 @@ scheduler.add_job(job_open, trigger="cron", hour=5, minute=58)
 scheduler.start()
 
 
-__help__ = f"""
- 🔹 `/nimode` on/off
+__help__ = """
+*Admins Only*
+
+ ‣ `/nimode` on/off
  
-**Note:** Night Mode chats get Automatically closed at 12pm(IST)
-and Automatically openned at 6am(IST) To Prevent Night Spams.
+*» Note:* Night Mode chats get Automatically closed at 12 am(IST) and Automatically opened at 6 am(IST) to Prevent Night Spams.
 """
 
 __mod_name__ = "Night Mode"
