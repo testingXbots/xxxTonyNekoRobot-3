@@ -119,7 +119,9 @@ Example:
  `/cash 1 usd inr`
 Output: `1.0 USD = 75.505 INR`
 *Carbon:*
- • `/carbon` : Makes Carbon if replied to a text.
+ • `/carbon`*:* Makes Carbon if replied to a text.
+*Fake Details*
+ • `/fakegen`*:* Generates Fake user information details
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
