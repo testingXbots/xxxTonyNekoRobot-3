@@ -7,14 +7,6 @@ from pyrogram.types import Message
 from NekoRobot import pbot as app
 from NekoRobot.services.sections import section
 
-from NekoRobot import (
-    DEV_USERS,
-    OWNER_ID,
-    DRAGONS,
-    DEMONS,
-    TIGERS,
-    WOLVES,
-)
 
 
 async def get_user_info(user, already=False):
@@ -22,42 +14,13 @@ async def get_user_info(user, already=False):
         user = await app.get_users(user)
     if not user.first_name:
         return ["Deleted account", None]
-
-   disaster_level_present = False
-
-    if user.id == OWNER_ID:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
-        disaster_level_present = True
-    elif user.id in DEV_USERS:
-        text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs ᴀ ᴍᴇᴍʙᴇʀ ᴏғ <b>ᴀɴᴏɴ ᴀssᴏᴄɪᴀᴛɪᴏɴ</b>.\n"
-        disaster_level_present = True
-    elif user.id in DRAGONS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅʀᴀɢᴏɴ</b>.\n"
-        disaster_level_present = True
-    elif user.id in DEMONS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅᴇᴍᴏɴ</b>.\n"
-        disaster_level_present = True
-    elif user.id in TIGERS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴛɪɢᴇʀ</b>.\n"
-        disaster_level_present = True
-    elif user.id in WOLVES:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴡᴏʟғ</b>.\n"
-        disaster_level_present = True
-
-    if disaster_level_present:
-        text += ' \n[<a href="https://t.me/DevilsHeavenMF/96962">ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ᴋɴᴏᴡ ᴡʜᴀᴛ ɪs ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟs.</a>]'.format(
-            bot.username
-        ) 
-
-
-
     user_id = user.id
     username = user.username
     first_name = user.first_name
     mention = user.mention("Link")
     last_name = user.last_name
-    photo_id = user.photo.big_file_id if user.photo else None
     
+
     
 
 
@@ -67,13 +30,11 @@ async def get_user_info(user, already=False):
         "Last Name": [last_name],
         "Username": [("@" + username) if username else "Null"],
         "User Link": [mention],
-        
+
+
     }
-
-
-
     caption = section("User info", body)
-    return [caption, photo_id]
+    return [caption]
 
 
 
@@ -89,14 +50,12 @@ async def info_func(_, message: Message):
     m = await message.reply_text("`Processing...`")
 
     try:
-        info_caption, photo_id = await get_user_info(user)
+        info_caption = await get_user_info(user)
     except Exception as e:
         return await m.edit(str(e))
 
-    if not photo_id:
-        return await m.edit(info_caption, disable_web_page_preview=True)
-    photo = await app.download_media(photo_id)
+    
 
-    await message.reply_photo(photo, caption=info_caption, quote=False)
+    await message.reply_text(caption=info_caption, quote=False)
     await m.delete()
-    os.remove(photo)
+    
