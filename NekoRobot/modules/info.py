@@ -7,6 +7,14 @@ from pyrogram.types import Message
 from NekoRobot import pbot as app
 from NekoRobot.services.sections import section
 
+from NekoRobot import (
+    DEV_USERS,
+    OWNER_ID,
+    DRAGONS,
+    DEMONS,
+    TIGERS,
+    WOLVES,
+)
 
 
 async def get_user_info(user, already=False):
@@ -31,7 +39,8 @@ async def get_user_info(user, already=False):
     caption = section("User info", body)
     return [caption, photo_id]
 
-
+if user.id == OWNER_ID:
+        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
 
 
 @app.on_message(filters.command("info") & ~filters.edited)
