@@ -7,14 +7,7 @@ from pyrogram.types import Message
 from NekoRobot import pbot as app
 from NekoRobot.services.sections import section
 
-from NekoRobot import (
-    DEV_USERS,
-    OWNER_ID,
-    DRAGONS,
-    DEMONS,
-    TIGERS,
-    WOLVES,
-)
+from NekoRobot import DEMONS
 
 
 async def get_user_info(user, already=False):
@@ -29,7 +22,7 @@ async def get_user_info(user, already=False):
     last_name = user.last_name
     photo_id = user.photo.big_file_id if user.photo else None
     
-    OWNER_ID = user.OWNER_ID("God User")
+    is_demon = user.id in DEMONS
 
 
     body = {
@@ -39,7 +32,7 @@ async def get_user_info(user, already=False):
         "Username": [("@" + username) if username else "Null"],
         "User Link": [mention],
         
-        "Rank": [OWNER_ID],
+        "Rank": is_demon,
     }
     caption = section("User info", body)
     return [caption, photo_id]
