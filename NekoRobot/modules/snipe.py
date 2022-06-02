@@ -50,9 +50,19 @@ Group admins/group owners do not need these commands.
  ╠ `/addtiger`*:* Adds a user to Tiger
  ╠ `/addwolf`*:* Adds a user to Wolf
  ╚ `Add dev doesnt exist, devs should know how to add themselves`
+
+ ╔ *Ping:*
+ ╠ `/ping`*:* gets ping time of bot to telegram server
+ ╚ `/pingall`*:* gets all listed ping times
+
+ ╔ *Broadcast: (Bot owner only)*
+ ╠  *Note:* This supports basic markdown
+ ╠ `/broadcastall`*:* Broadcasts everywhere
+ ╠ `/broadcastusers`*:* Broadcasts too all users
+ ╚ `/broadcastgroups`*:* Broadcasts too all groups
 """
 
-__mod_name__ = "Sudo List"
+__mod_name__ = "Disasters"
 
 SNIPE_HANDLER = CommandHandler(
     "snipe",
