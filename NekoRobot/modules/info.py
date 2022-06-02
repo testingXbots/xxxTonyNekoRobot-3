@@ -28,8 +28,8 @@ async def get_user_info(user, already=False):
     mention = user.mention("Link")
     last_name = user.last_name
     photo_id = user.photo.big_file_id if user.photo else None
-    is_dragon = user.id in DRAGONS
-    is_owner = user.id in OWNER_ID
+    
+    OWNER_ID = user.OWNER_ID("God User")
 
 
     body = {
@@ -38,8 +38,8 @@ async def get_user_info(user, already=False):
         "Last Name": [last_name],
         "Username": [("@" + username) if username else "Null"],
         "User Link": [mention],
-        "Dragon": [is_dragon],
-        "Owner": [is_owner],
+        
+        "Rank": [OWNER_ID],
     }
     caption = section("User info", body)
     return [caption, photo_id]
