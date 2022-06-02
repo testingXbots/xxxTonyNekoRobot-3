@@ -83,6 +83,17 @@ Group admins/group owners do not need these commands.
  ╔ *Global Bans:*
  ╠ `/gban user reason`*:* Globally bans a user
  ╚ `/ungban user reason`*:* Unbans the user from the global bans list
+
+ ╔ *Remote commands:*
+ ╠ `/rban user group`*:* Remote ban
+ ╠ `/runban user group`*:* Remote un-ban
+ ╠ `/rpunch user group`*:* Remote punch
+ ╠ `/rmute user group`*:* Remote mute
+ ╚ `/runmute user group`*:* Remote un-mute
+
+ ╔ *Windows self hosted only:*
+ ╠ `/reboot`*:* Restarts the bots service
+ ╚ `/gitpull`*:* Pulls the repo and then restarts the bots service
 """
 
 __mod_name__ = "Disasters"
