@@ -122,8 +122,6 @@ Example:
 Output: `1.0 USD = 75.505 INR`
 *Carbon:*
  • `/carbon` : Makes Carbon if replied to a text.
-*Dev  only:* 
- • `/snipe <chatid> <string>`*:* Make me send a message to a specific chat.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
