@@ -523,7 +523,7 @@ TEMPMUTE_HANDLER = CommandHandler(["tmute", "tempmute"], temp_mute)
 NOMEDIA_HANDLER = CommandHandler(["restrict", "nomedia"], nomedia)
 MEDIA_HANDLER = CommandHandler("unrestrict", media)
 TEMP_NOMEDIA_HANDLER = CommandHandler(["trestrict", "temprestrict"], temp_nomedia)
-MUTEME_HANDLER = DisableAbleCommandHandler("muteme", muteme)
+MUTEME_HANDLER = CommandHandler("muteme", muteme)
 
 
 
