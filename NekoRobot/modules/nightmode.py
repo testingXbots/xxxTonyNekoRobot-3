@@ -192,6 +192,7 @@ scheduler.start()
 
 __help__ = """
 *Admins Only*
+ » Enable in Groups
 
  ‣ `/nimode` on/off
  
