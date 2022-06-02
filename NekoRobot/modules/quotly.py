@@ -112,8 +112,3 @@ async def quotly_func(client, message: Message):
 
 __mod_name__ = "Quotly"
 
-__help__ = """
- - `/q` : Create a quote from a message
-
-"""
-
