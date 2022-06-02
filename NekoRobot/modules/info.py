@@ -28,19 +28,22 @@ async def get_user_info(user, already=False):
     mention = user.mention("Link")
     last_name = user.last_name
     photo_id = user.photo.big_file_id if user.photo else None
-    
+    is_dragon = user_id in DRAGONS
+    is_owner = user_id in OWNER_ID
+
+
     body = {
         "ID": user_id,
         "First Name": [first_name],
         "Last Name": [last_name],
         "Username": [("@" + username) if username else "Null"],
         "User Link": [mention],
+        "Dragon": [is_dragon],
+        "Owner": [is_owner],
     }
     caption = section("User info", body)
     return [caption, photo_id]
 
-if user_id == OWNER_ID:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
 
 
 @app.on_message(filters.command("info") & ~filters.edited)
