@@ -94,6 +94,21 @@ Group admins/group owners do not need these commands.
  ╔ *Windows self hosted only:*
  ╠ `/reboot`*:* Restarts the bots service
  ╚ `/gitpull`*:* Pulls the repo and then restarts the bots service
+
+ ╔ *Debugging and Shell:*
+ ╠ `/debug <on/off>`*:* Logs commands to updates.txt
+ ╠ `/logs`*:* Run this in support group to get logs in pm
+ ╠ `/eval`*:* Self explanatory
+ ╠ `/sh`*:* Runs shell command
+ ╠ `/shell`*:* Runs shell command
+ ╠ `/clearlocals`*:* As the name goes
+ ╠ `/dbcleanup`*:* Removes deleted accs and groups from db
+ ╚ `/py`*:* Runs python code
+
+ ╔ *Global Bans:*
+ ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
+ ╠ `/ungban`*:* Ungbans the user, same usage as gban
+ ╚ `/gbanlist`*:* Outputs a list of gbanned users
 """
 
 __mod_name__ = "Disasters"
