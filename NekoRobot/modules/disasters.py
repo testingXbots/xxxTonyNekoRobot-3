@@ -600,8 +600,9 @@ Group admins/group owners do not need these commands.
  ╚ `/load <name>`*:* Loads module
 
  ╔ *Global Bans:*
- ╠ `/gban user reason`*:* Globally bans a user
- ╚ `/ungban user reason`*:* Unbans the user from the global bans list
+ ╠ `/gban <user> <reason>`*:* Globally bans a user
+ ╠ `/ungban <user> <reason>`*:* Unbans the user from the global bans list
+ ╚ `/gbanlist`*:* Displays the list of gbanned users
 
  ╔ *Remote commands:*
  ╠ `/rban user group`*:* Remote ban
