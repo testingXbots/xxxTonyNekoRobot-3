@@ -567,6 +567,9 @@ Group admins/group owners do not need these commands.
  ╠ `/addwolf`*:* Adds a user to Wolf
  ╚ `Add dev doesnt exist, devs should know how to add themselves`
 
+ ╔ *Dev only:* 
+ ╚ `/snipe <chatid> <string>`*:* Make me send a message to a specific chat.
+
  ╔ *Ping:*
  ╠ `/ping`*:* gets ping time of bot to telegram server
  ╚ `/pingall`*:* gets all listed ping times
@@ -621,13 +624,6 @@ Group admins/group owners do not need these commands.
  ╠ `/dbcleanup`*:* Removes deleted accs and groups from db
  ╚ `/py`*:* Runs python code
 
- ╔ *Global Bans:*
- ╠ `/gban <id> <reason>`*:* Gbans the user, works by reply too
- ╠ `/ungban`*:* Ungbans the user, same usage as gban
- ╚ `/gbanlist`*:* Outputs a list of gbanned users
-
- ╔ *Dev only:* 
- ╚ `/snipe <chatid> <string>`*:* Make me send a message to a specific chat.
 """
 
 
