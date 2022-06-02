@@ -56,6 +56,6 @@ async def info_func(_, message: Message):
 
     
 
-
+    await m.edit(info_caption, disable_web_page_preview=True)
     await m.delete()
     
