@@ -363,10 +363,10 @@ __help__ = """
 
 *Anime Fun Modules:*
 
-  🔹 `/hug`            🔹 `/foxgirl`
+  🔹 `/hug`             🔹 `/foxgirl`
   🔹 `/neko`           🔹 `/smug`
   🔹 `/kiss`           🔹 `/feed`
-  🔹 `/waifu`          🔹 `/tickle`
+  🔹 `/waifu`         🔹 `/tickle`
  
 """
 
