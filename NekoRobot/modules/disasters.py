@@ -538,7 +538,7 @@ def devlist(update: Update, context: CallbackContext):
         "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
     )
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply = "<b>Hero Association Members - Rank S Hunters ⚡️:</b>\n"
+    reply = "<b>Ⲥⲏʟⲟⲉ Association Members - Rank S Hunters ⚡️:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
         try:
