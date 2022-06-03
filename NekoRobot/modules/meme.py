@@ -359,6 +359,15 @@ __help__ = """
  🔹 `/8ball`*:* predicts using 8ball method 
  🔹 `/decide` can be also used with regex like: `Liza? <question>: randomly answer "Yes, No" etc.`
  🔹 `/hitler`*:* Quote a message and type this command to make a caption of hitler
+ 
+
+*Anime Fun Modules:*
+
+  🔹 `/hug`            🔹 `/foxgirl`
+  🔹 `/neko`           🔹 `/smug`
+  🔹 `/kiss`           🔹 `/feed`
+  🔹 `/waifu`          🔹 `/tickle`
+ 
 """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
