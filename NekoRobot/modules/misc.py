@@ -132,6 +132,8 @@ Output: `1.0 USD = 75.505 INR`
 *HandWrite:*
  Writes the given text on white page with a pen 🖊
  ‣ `/write <text>` *:* writes the given text.
+*Source* (Repo)*:*
+ ‣ `/source`*:* To get Source of this bot
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler("echo", echo, filters=Filters.group)
