@@ -1,12 +1,9 @@
 import os
-
-
 from pyrogram import filters
 from pyrogram.types import Message
 
 from NekoRobot import pbot as app
 from NekoRobot.services.sections import section
-
 
 
 async def get_user_info(user, already=False):
@@ -19,10 +16,7 @@ async def get_user_info(user, already=False):
     first_name = user.first_name
     mention = user.mention("Link")
     last_name = user.last_name
-    
-
-    
-
+    photo_id = user.photo.big_file_id if user.photo else None
 
     body = {
         "ID": user_id,
@@ -30,11 +24,9 @@ async def get_user_info(user, already=False):
         "Last Name": [last_name],
         "Username": [("@" + username) if username else "Null"],
         "User Link": [mention],
-
-
     }
     caption = section("User info", body)
-    return [caption]
+    return [caption, photo_id]
 
 
 
@@ -50,12 +42,14 @@ async def info_func(_, message: Message):
     m = await message.reply_text("`Processing...`")
 
     try:
-        info_caption = await get_user_info(user)
+        info_caption, photo_id = await get_user_info(user)
     except Exception as e:
         return await m.edit(str(e))
 
-    
+    if not photo_id:
+        return await m.edit(info_caption, disable_web_page_preview=True)
+    photo = await app.download_media(photo_id)
 
-    await m.edit(info_caption, quote=False)
+    await message.reply_photo(photo, caption=info_caption, quote=False)
     await m.delete()
-    
+    os.remove(photo)
