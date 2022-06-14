@@ -6,7 +6,7 @@ import os
 
 
 def get_user_list(config, key):
-    with open("{}/NekoRobot/{}".format(os.getcwd(), config), "r") as json_file:
+    with open('{}/NekoRobot/{}'.format(os.getcwd(), config), 'r') as json_file:
         return json.load(json_file)[key]
 
 
@@ -39,7 +39,7 @@ class Config(object):
     DATABASE_URL = "postgres://zbrkaxqs:8JcU08L8AAcec6EEHOWdhoD80su3KIm5@arjuna.db.elephantsql.com/zbrkaxqs"
     DB_URL = "postgres://zbrkaxqs:8JcU08L8AAcec6EEHOWdhoD80su3KIm5@arjuna.db.elephantsql.com/zbrkaxqs"
 
-    REDIS_URI = ""
+    REDIS_URL = ""
 
 
     LOAD = []
