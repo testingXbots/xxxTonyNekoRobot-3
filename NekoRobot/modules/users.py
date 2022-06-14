@@ -1,19 +1,33 @@
+# NekoRobot
+# Copyright (C) 2017-2019, Paul Larsen
+# Copyright (c) 2022, Koyūki • Network, <https://github.com/Awesome-Prince/NekoRobot-3>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 from io import BytesIO
 from time import sleep
 
-from telegram import TelegramError, Update
-from telegram.error import BadRequest, Unauthorized
-from telegram.ext import (CallbackContext, CommandHandler, Filters,
-                          MessageHandler, run_async)
+from telegram import TelegramError
+from telegram.error import BadRequest
+from telegram.ext import MessageHandler, Filters, CommandHandler
 
 import NekoRobot.modules.sql.users_sql as sql
-from NekoRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from NekoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from NekoRobot.modules.sql.users_sql import get_all_users
+from NekoRobot import dispatcher, OWNER_ID, LOGGER
+from NekoRobot.modules.helper_funcs.filters import CustomFilters
 
 USERS_GROUP = 4
-CHAT_GROUP = 5
-DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
+CHAT_GROUP = 10
 
 
 def get_user_id(username):
@@ -21,7 +35,7 @@ def get_user_id(username):
     if len(username) <= 5:
         return None
 
-    if username.startswith('@'):
+    if username.startswith("@"):
         username = username[1:]
 
     users = sql.get_userid_by_name(username)
@@ -29,135 +43,94 @@ def get_user_id(username):
     if not users:
         return None
 
-    elif len(users) == 1:
+    if len(users) == 1:
         return users[0].user_id
+    for user_obj in users:
+        try:
+            userdat = dispatcher.bot.get_chat(user_obj.user_id)
+            if userdat.username == username:
+                return userdat.id
 
-    else:
-        for user_obj in users:
-            try:
-                userdat = dispatcher.bot.get_chat(user_obj.user_id)
-                if userdat.username == username:
-                    return userdat.id
-
-            except BadRequest as excp:
-                if excp.message == 'Chat not found':
-                    pass
-                else:
-                    LOGGER.exception("Error extracting user ID")
+        except BadRequest as excp:
+            if excp.message != "Chat not found":
+                LOGGER.exception("Error extracting user ID")
 
     return None
 
 
-@run_async
-@sudo_plus
-def broadcast(update: Update, context: CallbackContext):
+def broadcast(update, context):
     to_send = update.effective_message.text.split(None, 1)
-
     if len(to_send) >= 2:
-        to_group = False
-        to_user = False
-        if to_send[0] == '/broadcastgroups':
-            to_group = True
-        if to_send[0] == '/broadcastusers':
-            to_user = True
-        else:
-            to_group = to_user = True
         chats = sql.get_all_chats() or []
-        users = get_all_users()
         failed = 0
-        failed_user = 0
-        if to_group:
-            for chat in chats:
-                try:
-                    context.bot.sendMessage(
-                        int(chat.chat_id),
-                        to_send[1],
-                        parse_mode="MARKDOWN",
-                        disable_web_page_preview=True)
-                    sleep(0.1)
-                except TelegramError:
-                    failed += 1
-        if to_user:
-            for user in users:
-                try:
-                    context.bot.sendMessage(
-                        int(user.user_id),
-                        to_send[1],
-                        parse_mode="MARKDOWN",
-                        disable_web_page_preview=True)
-                    sleep(0.1)
-                except TelegramError:
-                    failed_user += 1
+        for chat in chats:
+            try:
+                context.bot.sendMessage(int(chat.chat_id), to_send[1])
+                sleep(0.1)
+            except TelegramError:
+                failed += 1
+                LOGGER.warning(
+                    "Couldn't send broadcast to %s, group name %s",
+                    str(chat.chat_id),
+                    str(chat.chat_name),
+                )
+
         update.effective_message.reply_text(
-            f"Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
+            "Broadcast complete. {} groups failed to receive the message, probably "
+            "due to being kicked.".format(failed)
         )
 
 
-@run_async
-
-def log_user(update: Update, context: CallbackContext):
+def log_user(update, _):
     chat = update.effective_chat
     msg = update.effective_message
 
-    sql.update_user(msg.from_user.id, msg.from_user.username, chat.id,
-                    chat.title)
+    sql.update_user(msg.from_user.id, msg.from_user.username, chat.id, chat.title)
 
     if msg.reply_to_message:
-        sql.update_user(msg.reply_to_message.from_user.id,
-                        msg.reply_to_message.from_user.username, chat.id,
-                        chat.title)
+        sql.update_user(
+            msg.reply_to_message.from_user.id,
+            msg.reply_to_message.from_user.username,
+            chat.id,
+            chat.title,
+        )
 
     if msg.forward_from:
         sql.update_user(msg.forward_from.id, msg.forward_from.username)
 
 
-@run_async
-@sudo_plus
-def chats(update: Update, context: CallbackContext):
+def chats(update, _):
     all_chats = sql.get_all_chats() or []
-    chatfile = 'List of chats.\n0. Chat name | Chat ID | Members count\n'
-    P = 1
+    chatfile = "List of chats.\n"
     for chat in all_chats:
-        try:
-            curr_chat = context.bot.getChat(chat.chat_id)
-            bot_member = curr_chat.get_member(context.bot.id)
-            chat_members = curr_chat.get_members_count(context.bot.id)
-            chatfile += "{}. {} | {} | {}\n".format(P, chat.chat_name,
-                                                    chat.chat_id, chat_members)
-            P = P + 1
-        except:
-            pass
+        chatfile += "{} - ({})\n".format(chat.chat_name, chat.chat_id)
 
     with BytesIO(str.encode(chatfile)) as output:
-        output.name = "groups_list.txt"
+        output.name = "chatlist.txt"
         update.effective_message.reply_document(
             document=output,
-            filename="groups_list.txt",
-            caption="Here be the list of groups in my database.")
+            filename="chatlist.txt",
+            caption="Here is the list of chats in my database.",
+        )
 
 
+def chat_checker(update, context):
+    if (
+        update.effective_message.chat.get_member(context.bot.id).can_send_messages
+        is False
+    ):
+        context.bot.leaveChat(update.effective_message.chat.id)
 
-def chat_checker(update: Update, context: CallbackContext):
-    bot = context.bot
-    try:
-        if update.effective_message.chat.get_member(
-                bot.id).can_send_messages is False:
-            bot.leaveChat(update.effective_message.chat.id)
-    except Unauthorized:
-        pass
 
-@run_async
 def __user_info__(user_id):
-    if user_id in [777000, 1087968824]:
-        return """╘══「 Groups count: <code>???</code> 」"""
     if user_id == dispatcher.bot.id:
-        return """╘══「 Groups count: <code>???</code> 」"""
+        return """I've seen them in... Wow. Are they stalking me? They're in all the same places I am... oh. It's me."""
     num_chats = sql.get_user_num_chats(user_id)
-    return f"""╘══「 Groups count: <code>{num_chats}</code> 」"""
+    return """I've seen them in <code>{}</code> chats in total.""".format(num_chats)
 
 
 def __stats__():
-    return f"• {sql.num_users()} users, across {sql.num_chats()} chats"
+    return "× {} users, across {} chats".format(sql.num_users(), sql.num_chats())
 
 
 def __migrate__(old_chat_id, new_chat_id):
@@ -166,17 +139,20 @@ def __migrate__(old_chat_id, new_chat_id):
 
 __help__ = ""  # no help string
 
+__mod_name__ = "Users"
+
 BROADCAST_HANDLER = CommandHandler(
-    ["broadcastall", "broadcastusers", "broadcastgroups"], broadcast)
-USER_HANDLER = MessageHandler(Filters.all & Filters.group, log_user)
-CHAT_CHECKER_HANDLER = MessageHandler(Filters.all & Filters.group, chat_checker)
-CHATLIST_HANDLER = CommandHandler("groups", chats)
+    "broadcast", broadcast, filters=Filters.user(OWNER_ID), run_async=True
+)
+USER_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, log_user)
+CHATLIST_HANDLER = CommandHandler(
+    "chatlist", chats, filters=CustomFilters.dev_filter, run_async=True
+)
+CHAT_CHECKER_HANDLER = MessageHandler(
+    Filters.all & Filters.chat_type.groups, chat_checker
+)
 
 dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
 dispatcher.add_handler(BROADCAST_HANDLER)
 dispatcher.add_handler(CHATLIST_HANDLER)
 dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
-
-__mod_name__ = "Users"
-__handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER,
-                CHATLIST_HANDLER]
