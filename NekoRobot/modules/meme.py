@@ -361,7 +361,7 @@ __help__ = """
  🔹 `/hitler`*:* Quote a message and type this command to make a caption of hitler
  
 
-*Anime Fun Modules:*
+*Anime Fun Modules:* @@@@@@
 
   🔹 `/hug`             🔹 `/foxgirl`
   🔹 `/neko`           🔹 `/smug`
