@@ -26,6 +26,7 @@ import os
 import sys
 import time
 import spamwatch
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 import aiohttp
 
 from Python_ARQ import ARQ
