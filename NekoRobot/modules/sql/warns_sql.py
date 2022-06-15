@@ -1,38 +1,15 @@
-"""
-MIT License
-Copyright (C) 2017-2019, Paul Larsen
-Copyright (C) 2022 Hodacka
-Copyright (c) 2022, Yūki • Black Knights Union, <https://github.com/Hodacka/NekoRobot-3>
-This file is part of @NekoXRobot (Telegram Bot)
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the Software), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
 import threading
 
 from NekoRobot.modules.sql import BASE, SESSION
-from sqlalchemy import (Boolean, Column, Integer, String, UnicodeText, distinct,
-                        func)
+from sqlalchemy import Boolean, Column, String, UnicodeText, distinct, func, Integer
+from sqlalchemy.sql.sqltypes import BigInteger
 from sqlalchemy.dialects import postgresql
 
 
 class Warns(BASE):
     __tablename__ = "warns"
 
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     chat_id = Column(String(14), primary_key=True)
     num_warns = Column(Integer, default=0)
     reasons = Column(postgresql.ARRAY(UnicodeText))
@@ -45,7 +22,11 @@ class Warns(BASE):
 
     def __repr__(self):
         return "<{} warns for {} in {} for reasons {}>".format(
-            self.num_warns, self.user_id, self.chat_id, self.reasons)
+            self.num_warns,
+            self.user_id,
+            self.chat_id,
+            self.reasons,
+        )
 
 
 class WarnFilters(BASE):
@@ -64,8 +45,10 @@ class WarnFilters(BASE):
 
     def __eq__(self, other):
         return bool(
-            isinstance(other, WarnFilters) and self.chat_id == other.chat_id and
-            self.keyword == other.keyword)
+            isinstance(other, WarnFilters)
+            and self.chat_id == other.chat_id
+            and self.keyword == other.keyword,
+        )
 
 
 class WarnSettings(BASE):
@@ -80,8 +63,7 @@ class WarnSettings(BASE):
         self.soft_warn = soft_warn
 
     def __repr__(self):
-        return "<{} has {} possible warns.>".format(self.chat_id,
-                                                    self.warn_limit)
+        return "<{} has {} possible warns.>".format(self.chat_id, self.warn_limit)
 
 
 Warns.__table__.create(checkfirst=True)
@@ -104,7 +86,7 @@ def warn_user(user_id, chat_id, reason=None):
         warned_user.num_warns += 1
         if reason:
             warned_user.reasons = warned_user.reasons + [
-                reason
+                reason,
             ]  # TODO:: double check this wizardry
 
         reasons = warned_user.reasons
@@ -163,7 +145,8 @@ def add_warn_filter(chat_id, keyword, reply):
         if keyword not in WARN_FILTERS.get(str(chat_id), []):
             WARN_FILTERS[str(chat_id)] = sorted(
                 WARN_FILTERS.get(str(chat_id), []) + [keyword],
-                key=lambda x: (-len(x), x))
+                key=lambda x: (-len(x), x),
+            )
 
         SESSION.merge(warn_filt)  # merge to avoid duplicate key issues
         SESSION.commit()
@@ -189,8 +172,9 @@ def get_chat_warn_triggers(chat_id):
 
 def get_chat_warn_filters(chat_id):
     try:
-        return SESSION.query(WarnFilters).filter(
-            WarnFilters.chat_id == str(chat_id)).all()
+        return (
+            SESSION.query(WarnFilters).filter(WarnFilters.chat_id == str(chat_id)).all()
+        )
     finally:
         SESSION.close()
 
@@ -231,8 +215,7 @@ def get_warn_setting(chat_id):
         setting = SESSION.query(WarnSettings).get(str(chat_id))
         if setting:
             return setting.warn_limit, setting.soft_warn
-        else:
-            return 3, False
+        return 3, False
 
     finally:
         SESSION.close()
@@ -261,8 +244,11 @@ def num_warn_filters():
 
 def num_warn_chat_filters(chat_id):
     try:
-        return SESSION.query(WarnFilters.chat_id).filter(
-            WarnFilters.chat_id == str(chat_id)).count()
+        return (
+            SESSION.query(WarnFilters.chat_id)
+            .filter(WarnFilters.chat_id == str(chat_id))
+            .count()
+        )
     finally:
         SESSION.close()
 
@@ -296,15 +282,19 @@ def __load_chat_warn_filters():
 
 def migrate_chat(old_chat_id, new_chat_id):
     with WARN_INSERTION_LOCK:
-        chat_notes = SESSION.query(Warns).filter(
-            Warns.chat_id == str(old_chat_id)).all()
+        chat_notes = (
+            SESSION.query(Warns).filter(Warns.chat_id == str(old_chat_id)).all()
+        )
         for note in chat_notes:
             note.chat_id = str(new_chat_id)
         SESSION.commit()
 
     with WARN_FILTER_INSERTION_LOCK:
-        chat_filters = SESSION.query(WarnFilters).filter(
-            WarnFilters.chat_id == str(old_chat_id)).all()
+        chat_filters = (
+            SESSION.query(WarnFilters)
+            .filter(WarnFilters.chat_id == str(old_chat_id))
+            .all()
+        )
         for filt in chat_filters:
             filt.chat_id = str(new_chat_id)
         SESSION.commit()
@@ -314,8 +304,11 @@ def migrate_chat(old_chat_id, new_chat_id):
             del WARN_FILTERS[str(old_chat_id)]
 
     with WARN_SETTINGS_LOCK:
-        chat_settings = SESSION.query(WarnSettings).filter(
-            WarnSettings.chat_id == str(old_chat_id)).all()
+        chat_settings = (
+            SESSION.query(WarnSettings)
+            .filter(WarnSettings.chat_id == str(old_chat_id))
+            .all()
+        )
         for setting in chat_settings:
             setting.chat_id = str(new_chat_id)
         SESSION.commit()
