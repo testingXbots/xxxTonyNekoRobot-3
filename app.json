@@ -38,7 +38,16 @@
          "description": "Your postgres sql db, empty this field if you dont have one.",
          "required": false,
          "value": ""
-      },      
+      },
+       "MONGO_DB_URI": {
+         "description": "Required for database connections.",
+         "required": true,
+         "value": "mongodb+srv://toomicsbotuname:toomicsbotpw@toomicsbotcname.xy1nm.mongodb.net/?retryWrites=true&w=majority"
+      },
+      "REDIS_URL": {
+         "description": "Get it from Redislabs.com",
+         "required": true,
+         "value": "redis://default:4DeWVZEu5M1e0jbb5INL7nR8bCCkZ21j@redis-17091.c85.us-east-1-2.ec2.cloud.redislabs.com:17091/GroupManagementBot-free-db"
       "OWNER_ID": {
          "description": "Your user ID as an integer.",
          "required": true,
