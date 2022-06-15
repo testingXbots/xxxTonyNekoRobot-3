@@ -126,5 +126,5 @@ wikipedia==1.4.0
 
 humanize
 
-
+pymongo
 speedtest
