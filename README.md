@@ -54,7 +54,7 @@ The Easiest Way to Deploy This Bot is Via Heroku.
 	
   <h1>
     <p align="center">
-        <a href="https://heroku.com/deploy?template=https://github.com/Awesome-Prince/NekoRobot-3.git">
+        <a href="https://heroku.com/deploy?template=https://github.com/testingXbots/xxxTonyNekoRobot-3">
             <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
         </a>
     </p>
