@@ -1,24 +1,12 @@
-import os
-
-import requests
 from faker import Faker
 from faker.providers import internet
 from telethon import events
+from NekoRobot import telethn as tbot
+from pyrogram import filters
+from NekoRobot import pbot
 
-from NekoRobot.utils.pluginhelpers import is_admin
-from NekoRobot import telethn, SUPPORT_CHAT
-
-
-@telethn.on(events.NewMessage(pattern="/fakegen$"))
+@tbot.on(events.NewMessage(pattern="/fakegen$"))
 async def hi(event):
-    if event.fwd_from:
-        return
-    if (
-        event.is_group
-        and not await is_admin(event, event.message.sender_id)
-    ):
-        await event.reply("`You Should Be Admin To Do This!`")
-        return
     fake = Faker()
     print("FAKE DETAILS GENERATED\n")
     name = str(fake.name())
@@ -35,3 +23,19 @@ async def hi(event):
         parse_mode="HTML",
     )
 
+@pbot.on_message(filters.command('picgen'))
+async def picgen(_, message):
+    img = "https://thispersondoesnotexist.com/image"
+    text = f"Fake Image successfully generated."
+    await message.reply_photo(photo=img, caption=text)
+
+
+
+
+__mod_name__ = "Fake info"
+
+__help__ = """
+*Commands:*
+- /fakegen : Generates Fake Information
+- /picgen : Generate a Fake pic
+"""
